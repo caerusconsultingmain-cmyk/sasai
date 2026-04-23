@@ -40,7 +40,6 @@
     img{display:block;max-width:100%}
     .container{width:min(var(--max),calc(100% - 40px));margin:0 auto}
     
-    /* Mobile menu styles */
     .mobile-menu-btn {
       display: none;
       background: none;
@@ -103,7 +102,7 @@
     .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:28px;align-items:stretch}
     .hero-copy h1{
       margin:0;
-      font-size:clamp(38px,6vw,72px);
+      font-size:clamp(38px,6vw,64px);
       line-height:1.1;
       letter-spacing:-.03em;
       max-width:900px;
@@ -319,7 +318,6 @@
     .form-note{margin-top:8px;color:#7f8a95;font-size:12px;line-height:1.5}
     .footer{padding:30px 0 24px;color:#7d8792;font-size:13px;text-align:center}
     
-    /* MOBILE STYLES */
     @media (max-width: 900px) {
       .container{width:min(var(--max),calc(100% - 24px));}
       .hero-grid,.problem-panel,.grid-2,.gallery,.cta-grid,.band-grid,.process-grid,.industries{grid-template-columns:1fr}
@@ -395,10 +393,9 @@
         <div class="eyebrow">AI automation NZ</div>
         <div class="hero-grid">
           <div class="hero-copy">
-            <h1>Tell us where your workflows breakdown. We'll map it, automate it, and make it operational.</h1>
+            <h1>Built for NZ businesses where work happens in the real world.</h1>
             <p>
-              We automate workflows using AI for businesses in New Zealand — from quoting and safety documents
-              to computer vision, geospatial analysis, and field-ready operational systems.
+              We design and build workflow automation, spatial systems, and computer-vision tools that replace manual quoting, reporting, and site documentation.
             </p>
             <div class="hero-actions">
               <a class="btn btn-primary" href="#contact">Tell us about your workflow</a>
@@ -407,7 +404,7 @@
           </div>
 
           <aside class="hero-card">
-            <img src="images/hero2.png" alt="Aerial site view showing point cloud transformed into a usable real-world scene">
+            <img src="hero2.png" alt="Aerial site view showing point cloud transformed into a usable real-world scene">
             <div class="hero-stat">
               <div class="metric">
                 <div class="value">AI automation</div>
@@ -496,7 +493,7 @@
           </div>
 
           <div class="panel visual">
-            <img src="images/ai-solutions-discovery.png" alt="Discovery workflow screen showing bottlenecks, handoffs and systems analysis">
+            <img src="ai-solutions-discovery.png" alt="Discovery workflow screen showing bottlenecks, handoffs and systems analysis">
             <div class="caption">
               <div class="caption-title">Discovery summary</div>
               <p>
@@ -523,7 +520,7 @@
         <div class="grid-2">
           <article class="panel">
             <div class="showcase-image">
-              <img src="images/roofm8.png" alt="RoofM8 application interface showing aerial property context and AI assistant">
+              <img src="roofm8.png" alt="RoofM8 application interface showing aerial property context and AI assistant">
             </div>
             <div class="showcase-copy">
               <h3>Workflow automation for quoting and site documentation</h3>
@@ -541,7 +538,7 @@
 
           <article class="panel">
             <div class="showcase-image">
-              <img src="images/qwenroof.png" alt="Roof image analysed by AI with structured condition output">
+              <img src="qwenroof.png" alt="Roof image analysed by AI with structured condition output">
             </div>
             <div class="showcase-copy">
               <h3>Computer vision that produces structured decisions</h3>
@@ -598,13 +595,13 @@
 
         <div class="gallery" style="margin-top:20px;">
           <div class="gallery-main">
-            <img src="images/colorpointcloud4.png" alt="Large coloured urban point cloud showing 3D reconstruction">
+            <img src="colorpointcloud4.png" alt="Large coloured urban point cloud showing 3D reconstruction">
           </div>
           <div class="gallery-side">
             <div class="gallery-side-grid">
-              <div class="thumb"><img src="images/colorpointcloud1.png" alt="Colourised residential point cloud"></div>
-              <div class="thumb"><img src="images/gis.png" alt="GIS land cover classification view"></div>
-              <div class="thumb"><img src="images/gis2.png" alt="3D GIS visualisation of classified point cloud"></div>
+              <div class="thumb"><img src="colorpointcloud1.png" alt="Colourised residential point cloud"></div>
+              <div class="thumb"><img src="gis.png" alt="GIS land cover classification view"></div>
+              <div class="thumb"><img src="gis2.png" alt="3D GIS visualisation of classified point cloud"></div>
             </div>
           </div>
         </div>
@@ -612,7 +609,7 @@
         <div class="grid-2" style="margin-top:20px;">
           <article class="panel">
             <div class="showcase-image">
-              <img src="images/colorpointcloud5.png" alt="Point cloud and aerial fusion showing transformation into real scene">
+              <img src="colorpointcloud5.png" alt="Point cloud and aerial fusion showing transformation into real scene">
             </div>
             <div class="showcase-copy">
               <h3>From raw capture to usable output</h3>
@@ -625,7 +622,7 @@
 
           <article class="panel">
             <div class="showcase-image">
-              <img src="images/colorpointcloud2.png" alt="Property measurement and quote output over mapped building footprint">
+              <img src="colorpointcloud2.png" alt="Property measurement and quote output over mapped building footprint">
             </div>
             <div class="showcase-copy">
               <h3>Spatial data that feeds commercial workflows</h3>
@@ -682,7 +679,7 @@
                 Tell us what feels too manual, too slow, or too fragmented. We'll map the problem,
                 identify the real leverage point, and show you what an AI-driven workflow could look like.
               </p>
-              <a class="btn btn-primary" href="mark@sasai.co.nz">Email us directly</a>
+              <a class="btn btn-primary" href="mailto:hello@yourdomain.com">Email us directly</a>
             </div>
 
             <div class="form-box">
@@ -720,4 +717,18 @@
     <div class="container">
       AI Solutions — AI automation NZ for construction, property, infrastructure, and operational workflows.
     </div>
-  </footer
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    menuBtn.addEventListener('click', () => {
+      if (mobileNav.style.display === 'flex') {
+        mobileNav.style.display = 'none';
+      } else {
+        mobileNav.style.display = 'flex';
+      }
+    });
+  </script>
+</body>
+</html>
