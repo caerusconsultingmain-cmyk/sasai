@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>AI Automation NZ | AI Solutions</title>
+  <meta name="description" content="AI automation NZ for construction, property, infrastructure and operations. Tell us your issue. We map the workflow, build the system, and make it operational." />
+  <style>
+    :root{
+      --bg:#05070a;
+      --bg2:#08111b;
+      --panel:#0b1117;
+      --panel2:#0f1722;
+      --line:rgba(255,255,255,.08);
+      --line2:rgba(255,255,255,.05);
+      --text:#eef2f7;
+      --muted:#9aa7b2;
+      --accent:#f58a2a;
+      --accent2:#99b6ff;
+      --max:1200px;
+      --shadow:0 20px 50px rgba(0,0,0,.32);
+      --radius:26px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px),
+        radial-gradient(circle at top right, rgba(245,138,42,.12), transparent 16%),
+        radial-gradient(circle at top left, rgba(74,126,255,.10), transparent 18%),
+        var(--bg);
+      background-size: 56px 56px,56px 56px,auto,auto,auto;
+      background-position: center;
+    }
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
+    .container{width:min(var(--max),calc(100% - 40px));margin:0 auto}
+    
+    /* Mobile menu styles */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 10px 14px;
+      cursor: pointer;
+      color: var(--text);
+      font-size: 20px;
+    }
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 78px;
+      left: 0;
+      right: 0;
+      background: rgba(5,7,10,.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--line);
+      padding: 20px;
+      z-index: 39;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .mobile-nav a {
+      color: var(--text);
+      font-size: 18px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line2);
+    }
+    .mobile-nav a:last-child {
+      border-bottom: none;
+    }
+    
+    .nav{
+      position:sticky;top:0;z-index:40;
+      backdrop-filter:blur(18px);
+      background:rgba(5,7,10,.72);
+      border-bottom:1px solid var(--line2);
+    }
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;min-height:78px;gap:24px}
+    .brand{display:flex;align-items:center;gap:10px;font-size:30px;font-weight:700;letter-spacing:-.03em}
+    .dot{color:var(--accent);font-size:36px;line-height:1}
+    .nav-links{display:flex;gap:28px;color:var(--muted);font-size:15px}
+    .nav-links a:hover{color:var(--text)}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      padding:14px 22px;border-radius:999px;font-weight:650;transition:.2s ease;
+      border:1px solid transparent;
+      cursor: pointer;
+    }
+    .btn-primary{background:var(--accent);color:#fff;box-shadow:0 10px 24px rgba(245,138,42,.24)}
+    .btn-primary:hover{transform:translateY(-1px);box-shadow:0 14px 30px rgba(245,138,42,.3)}
+    .btn-secondary{border-color:var(--line);background:rgba(255,255,255,.02)}
+    .btn-secondary:hover{background:rgba(255,255,255,.05)}
+    .section{padding:34px 0 0}
+    .eyebrow{display:inline-flex;align-items:center;gap:12px;color:var(--accent);text-transform:uppercase;letter-spacing:.16em;font-size:12px;font-weight:750;margin-bottom:18px}
+    .eyebrow::before{content:"";width:42px;height:1px;background:rgba(255,255,255,.28)}
+    .hero{padding:40px 0 28px}
+    .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:28px;align-items:stretch}
+    .hero-copy h1{
+      margin:0;
+      font-size:clamp(38px,6vw,72px);
+      line-height:1.1;
+      letter-spacing:-.03em;
+      max-width:900px;
+    }
+    .hero-copy p{
+      margin:20px 0 0;
+      max-width:770px;
+      color:var(--muted);
+      font-size:18px;
+      line-height:1.5;
+    }
+    .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
+    .hero-card{
+      position:relative;
+      min-height:580px;
+      border-radius:30px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)), var(--panel);
+    }
+    .hero-card img{
+      position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+      filter:saturate(1.05) contrast(1.04);
+    }
+    .hero-card::after{
+      content:"";
+      position:absolute;inset:0;
+      background:
+        linear-gradient(180deg, rgba(5,7,10,.10), rgba(5,7,10,.60) 70%, rgba(5,7,10,.9)),
+        linear-gradient(90deg, rgba(5,7,10,.55), rgba(5,7,10,.08) 45%);
+    }
+    .hero-stat{
+      position:absolute;z-index:2;left:16px;right:16px;bottom:16px;
+      display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;
+    }
+    .metric{
+      background:rgba(8,17,27,.8);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:16px;
+      padding:12px;
+      backdrop-filter:blur(10px);
+    }
+    .metric .value{font-size:24px;font-weight:750;letter-spacing:-.03em;margin-bottom:5px}
+    .metric .label{font-size:12px;color:var(--muted);line-height:1.4}
+    .band{
+      margin-top:28px;
+      border:1px solid var(--line);
+      border-radius:24px;
+      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)), var(--panel);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .band-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+    .band-cell{padding:20px 16px;border-right:1px solid var(--line2)}
+    .band-cell:last-child{border-right:none}
+    .band-kicker{font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:.14em;font-weight:750;margin-bottom:10px}
+    .band h3{margin:0 0 8px;font-size:20px;letter-spacing:-.02em}
+    .band p{margin:0;color:var(--muted);font-size:14px;line-height:1.55}
+    .section-head{margin-bottom:20px}
+    .section-head h2{
+      margin:0;
+      font-size:clamp(28px,6vw,56px);
+      line-height:1.1;
+      letter-spacing:-.03em;
+      max-width:920px;
+    }
+    .section-head p{
+      margin:12px 0 0;
+      max-width:900px;
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.6;
+    }
+    .problem-panel{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:20px;
+      align-items:stretch;
+    }
+    .panel{
+      border:1px solid var(--line);
+      border-radius:24px;
+      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)), var(--panel);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .panel-pad{padding:20px}
+    .panel h3{margin:0 0 12px;font-size:24px;letter-spacing:-.02em}
+    .panel p,.panel li{color:var(--muted);font-size:16px;line-height:1.65}
+    .issue-box{
+      background:rgba(255,255,255,.02);
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:18px;
+      padding:16px;
+      margin:16px 0 0;
+    }
+    .issue-box strong{display:block;font-size:16px;margin-bottom:8px}
+    .mini-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}
+    .mini{
+      border:1px solid rgba(255,255,255,.06);
+      background:rgba(255,255,255,.02);
+      border-radius:16px;
+      padding:14px;
+    }
+    .mini .small{font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:.14em;font-weight:750;margin-bottom:8px}
+    .mini p{margin:0;font-size:14px;line-height:1.5}
+    .visual{
+      position:relative;min-height:100%;
+      background:#07101a;
+    }
+    .visual img{width:100%;height:100%;object-fit:cover}
+    .visual::after{
+      content:"";
+      position:absolute;inset:0;
+      background:linear-gradient(180deg, rgba(5,7,10,.02), rgba(5,7,10,.55));
+      pointer-events:none;
+    }
+    .caption{
+      position:absolute;left:16px;right:16px;bottom:16px;z-index:2;
+      background:rgba(8,17,27,.8);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:16px;
+      padding:12px 14px;
+      backdrop-filter:blur(10px);
+    }
+    .caption-title{font-size:12px;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);margin-bottom:6px;font-weight:750}
+    .caption p{margin:0;font-size:13px;color:#cfd8e3;line-height:1.5}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .showcase-image{
+      height:240px;border-bottom:1px solid var(--line)
+    }
+    .showcase-image img{width:100%;height:100%;object-fit:cover}
+    .showcase-copy{padding:20px}
+    .showcase-copy h3{margin:0 0 10px;font-size:22px;letter-spacing:-.02em}
+    .showcase-copy p{margin:0;color:var(--muted);font-size:15px;line-height:1.6}
+    .list{margin:14px 0 0;padding-left:18px}
+    .list li{margin-bottom:6px;font-size:14px}
+    .process{
+      border:1px solid var(--line);
+      border-radius:24px;
+      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)), var(--panel);
+      padding:20px;
+      box-shadow:var(--shadow);
+    }
+    .process-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+    .step{
+      background:var(--panel2);
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:16px;
+      padding:14px;
+      min-height:150px;
+    }
+    .step-no{font-size:11px;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;font-weight:750;margin-bottom:8px}
+    .step h4{margin:0 0 8px;font-size:18px;letter-spacing:-.01em}
+    .step p{margin:0;color:var(--muted);font-size:13px;line-height:1.55}
+    .gallery{display:grid;grid-template-columns:1.2fr .8fr;gap:20px}
+    .gallery-main,.gallery-side{
+      border:1px solid var(--line);
+      border-radius:24px;
+      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)), var(--panel);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .gallery-main img{width:100%;height:100%;min-height:400px;object-fit:cover}
+    .gallery-side-grid{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line2)}
+    .thumb{background:var(--panel);min-height:132px}
+    .thumb img{width:100%;height:100%;object-fit:cover}
+    .industries{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+    .industry{
+      border:1px solid var(--line);
+      border-radius:20px;
+      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)), var(--panel);
+      box-shadow:var(--shadow);
+      padding:20px;
+      min-height:200px;
+    }
+    .industry h3{margin:0 0 10px;font-size:20px;line-height:1.2;letter-spacing:-.02em}
+    .industry p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+    .cta-wrap{
+      margin-top:26px;
+      border:1px solid var(--line);
+      border-radius:24px;
+      background:
+        radial-gradient(circle at top right, rgba(245,138,42,.14), transparent 22%),
+        linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)),
+        var(--panel);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .cta-grid{display:grid;grid-template-columns:1fr .9fr;gap:0}
+    .cta-copy{padding:24px}
+    .cta-copy h2{margin:0 0 14px;font-size:clamp(28px,6vw,52px);line-height:1.1;letter-spacing:-.03em}
+    .cta-copy p{margin:0 0 20px;color:var(--muted);font-size:16px;line-height:1.65;max-width:760px}
+    .form-box{
+      border-left:1px solid var(--line2);
+      padding:24px;
+      background:rgba(255,255,255,.02);
+    }
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    input, select, textarea{
+      width:100%;
+      padding:12px 14px;
+      margin:0 0 12px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.08);
+      background:#0a111a;
+      color:var(--text);
+      font:inherit;
+      font-size:14px;
+    }
+    textarea{min-height:120px;resize:vertical}
+    .form-note{margin-top:8px;color:#7f8a95;font-size:12px;line-height:1.5}
+    .footer{padding:30px 0 24px;color:#7d8792;font-size:13px;text-align:center}
+    
+    /* MOBILE STYLES */
+    @media (max-width: 900px) {
+      .container{width:min(var(--max),calc(100% - 24px));}
+      .hero-grid,.problem-panel,.grid-2,.gallery,.cta-grid,.band-grid,.process-grid,.industries{grid-template-columns:1fr}
+      .hero-card{min-height:480px}
+      .gallery-main img{min-height:280px}
+      .form-box{border-left:none;border-top:1px solid var(--line2)}
+      .process-grid{grid-template-columns:repeat(2,1fr)}
+      .band-grid{grid-template-columns:1fr}
+      .band-cell{border-right:none;border-bottom:1px solid var(--line2);padding:16px}
+      .band-cell:last-child{border-bottom:none}
+      .industries{grid-template-columns:repeat(2,1fr)}
+      .nav-links{display:none}
+      .nav .btn-primary{display:none}
+      .mobile-menu-btn{display:block}
+      .hero-stat{grid-template-columns:repeat(2,1fr);gap:8px}
+      .metric .value{font-size:18px}
+      .metric .label{font-size:10px}
+      .hero-copy h1{font-size:clamp(32px,7vw,48px)}
+      .hero-copy p{font-size:16px}
+      .hero-actions .btn{padding:12px 18px;font-size:14px}
+      .section-head h2{font-size:clamp(24px,6vw,36px)}
+      .section-head p{font-size:15px}
+      .panel h3{font-size:20px}
+      .showcase-copy h3{font-size:18px}
+      .cta-copy{padding:20px}
+      .cta-copy h2{font-size:clamp(24px,6vw,36px)}
+      .cta-copy p{font-size:15px}
+      .form-box{padding:20px}
+      .form-row{grid-template-columns:1fr;gap:0}
+      .step{min-height:auto}
+    }
+    
+    @media (max-width: 480px) {
+      .hero-card{min-height:420px}
+      .hero-stat .metric{padding:8px}
+      .metric .value{font-size:14px}
+      .industries{grid-template-columns:1fr}
+      .process-grid{grid-template-columns:1fr}
+      .gallery-main img{min-height:220px}
+      .thumb{min-height:100px}
+      .panel-pad{padding:16px}
+      .showcase-copy{padding:16px}
+      .brand{font-size:24px}
+      .dot{font-size:30px}
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand"><span class="dot">•</span>AI Solutions</div>
+      <nav class="nav-links">
+        <a href="#problem">Discovery</a>
+        <a href="#proof">Proof</a>
+        <a href="#industries">Industries</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="btn btn-primary" href="#contact">Tell us your issue</a>
+      <button class="mobile-menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+    </div>
+    <div class="mobile-nav" id="mobileNav">
+      <a href="#problem">Discovery</a>
+      <a href="#proof">Proof</a>
+      <a href="#industries">Industries</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" style="color:var(--accent);">Tell us your issue</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="eyebrow">AI automation NZ</div>
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <h1>Tell us where your workflows breakdown. We'll map it, automate it, and make it operational.</h1>
+            <p>
+              We automate workflows using AI for businesses in New Zealand — from quoting and safety documents
+              to computer vision, geospatial analysis, and field-ready operational systems.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#contact">Tell us about your workflow</a>
+              <a class="btn btn-secondary" href="#proof">See real examples</a>
+            </div>
+          </div>
+
+          <aside class="hero-card">
+            <img src="images/hero2.png" alt="Aerial site view showing point cloud transformed into a usable real-world scene">
+            <div class="hero-stat">
+              <div class="metric">
+                <div class="value">AI automation</div>
+                <div class="label">Built for quoting, safety docs, diagnostics, ops workflows.</div>
+              </div>
+              <div class="metric">
+                <div class="value">Computer vision</div>
+                <div class="label">From roof analysis to image-led inspection.</div>
+              </div>
+              <div class="metric">
+                <div class="value">Geospatial</div>
+                <div class="label">Spatial data & site-aware systems for NZ.</div>
+              </div>
+              <div class="metric">
+                <div class="value">Operational</div>
+                <div class="label">Plug into real businesses, not disconnected dashboards.</div>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <div class="band">
+          <div class="band-grid">
+            <div class="band-cell">
+              <div class="band-kicker">What we do</div>
+              <h3>Automate workflows</h3>
+              <p>We remove repetitive admin, fragmented handoffs, and slow manual decision chains.</p>
+            </div>
+            <div class="band-cell">
+              <div class="band-kicker">How we do it</div>
+              <h3>Use AI where it matters</h3>
+              <p>Vision, spatial data, and structured logic applied directly to business operations.</p>
+            </div>
+            <div class="band-cell">
+              <div class="band-kicker">What you get</div>
+              <h3>Usable systems</h3>
+              <p>Not experiments. Not vague "AI strategy". Working tools that fit the way your business runs.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="problem">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Start with the problem</div>
+          <h2>Most businesses do not need "AI". They need one broken workflow fixed properly.</h2>
+          <p>
+            The starting point is simple: tell us what feels slower, messier, or more manual than it should be.
+            We break the workflow down, find the drag, and design the system around the real bottleneck.
+          </p>
+        </div>
+
+        <div class="problem-panel">
+          <div class="panel panel-pad">
+            <h3>Discovery that actually leads somewhere</h3>
+            <p>
+              You do not need to arrive with a technical brief. You can start with one sentence:
+              what part of the business feels slower than it should?
+            </p>
+
+            <div class="issue-box">
+              <strong>Example issue</strong>
+              "The gap between a client requesting a quote and the right estimator actually seeing the right job is dragging badly."
+            </div>
+
+            <div class="mini-grid">
+              <div class="mini">
+                <div class="small">Bottlenecks</div>
+                <p>Quoting delays, admin triage, duplicated data entry, weak handoffs.</p>
+              </div>
+              <div class="mini">
+                <div class="small">Systems</div>
+                <p>Email, forms, GIS, photos, PDFs, CRMs, job data, and field inputs.</p>
+              </div>
+              <div class="mini">
+                <div class="small">Outputs</div>
+                <p>Routing, scoring, document generation, diagnostics, alerts, or live decision support.</p>
+              </div>
+              <div class="mini">
+                <div class="small">Goal</div>
+                <p>Less manual work. Faster decisions. Better throughput. Fewer dropped opportunities.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel visual">
+            <img src="images/ai-solutions-discovery.png" alt="Discovery workflow screen showing bottlenecks, handoffs and systems analysis">
+            <div class="caption">
+              <div class="caption-title">Discovery summary</div>
+              <p>
+                We translate messy business pain into a system brief: where drag exists, what data is available,
+                where handoffs fail, and what automation should do next.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="proof">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Proof</div>
+          <h2>Real outputs. Real tools. Real operational use cases.</h2>
+          <p>
+            This is not a generic AI consultancy site. The work already exists in quoting, roof diagnostics,
+            point cloud processing, geospatial analysis, and workflow automation.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <article class="panel">
+            <div class="showcase-image">
+              <img src="images/roofm8.png" alt="RoofM8 application interface showing aerial property context and AI assistant">
+            </div>
+            <div class="showcase-copy">
+              <h3>Workflow automation for quoting and site documentation</h3>
+              <p>
+                RoofM8 shows the practical side of the model: combine property context, aerial imagery,
+                measurements, cost logic, and AI-assisted document generation inside one usable workflow.
+              </p>
+              <ul class="list">
+                <li>Quoting and estimate support</li>
+                <li>Safety document generation</li>
+                <li>Property-aware site context</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="showcase-image">
+              <img src="images/qwenroof.png" alt="Roof image analysed by AI with structured condition output">
+            </div>
+            <div class="showcase-copy">
+              <h3>Computer vision that produces structured decisions</h3>
+              <p>
+                Vision is only useful when it leads to a decision. This kind of workflow turns an uploaded site photo
+                into a usable assessment that can drive next steps, not just a comment box.
+              </p>
+              <ul class="list">
+                <li>Condition analysis from images</li>
+                <li>Structured outputs for action</li>
+                <li>Operational use instead of novelty</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Spatial intelligence</div>
+          <h2>When the job is physical, the data needs to understand place.</h2>
+          <p>
+            Spatial systems are where this becomes difficult to fake. If location, geometry, site state,
+            or physical assets matter, the software has to work with the real world as it is.
+          </p>
+        </div>
+
+        <div class="process">
+          <div class="process-grid">
+            <div class="step">
+              <div class="step-no">01</div>
+              <h4>Capture</h4>
+              <p>Bring in imagery, LiDAR, site context, property boundaries, or other physical-world inputs.</p>
+            </div>
+            <div class="step">
+              <div class="step-no">02</div>
+              <h4>Structure</h4>
+              <p>Turn loose files and raw data into usable geometry, identity, and context.</p>
+            </div>
+            <div class="step">
+              <div class="step-no">03</div>
+              <h4>Diagnose</h4>
+              <p>Extract the signals that matter: area, condition, change, risk, access, overlap, or proximity.</p>
+            </div>
+            <div class="step">
+              <div class="step-no">04</div>
+              <h4>Operate</h4>
+              <p>Use that output in quoting, monitoring, field decisions, reports, or downstream automation.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery" style="margin-top:20px;">
+          <div class="gallery-main">
+            <img src="images/colorpointcloud4.png" alt="Large coloured urban point cloud showing 3D reconstruction">
+          </div>
+          <div class="gallery-side">
+            <div class="gallery-side-grid">
+              <div class="thumb"><img src="images/colorpointcloud1.png" alt="Colourised residential point cloud"></div>
+              <div class="thumb"><img src="images/gis.png" alt="GIS land cover classification view"></div>
+              <div class="thumb"><img src="images/gis2.png" alt="3D GIS visualisation of classified point cloud"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-top:20px;">
+          <article class="panel">
+            <div class="showcase-image">
+              <img src="images/colorpointcloud5.png" alt="Point cloud and aerial fusion showing transformation into real scene">
+            </div>
+            <div class="showcase-copy">
+              <h3>From raw capture to usable output</h3>
+              <p>
+                Point clouds, classification layers, and image context are valuable because they can become
+                diagnostics, monitoring tools, property-linked insight, and operational decision support.
+              </p>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="showcase-image">
+              <img src="images/colorpointcloud2.png" alt="Property measurement and quote output over mapped building footprint">
+            </div>
+            <div class="showcase-copy">
+              <h3>Spatial data that feeds commercial workflows</h3>
+              <p>
+                Once the geometry is right, workflows like measurement, pricing, scoping, and document generation
+                stop relying on guesswork and start running off structured context.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="industries">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Who this is for</div>
+          <h2>Built for NZ businesses where work happens in the real world.</h2>
+          <p>
+            The same core model can be adapted across construction, property, infrastructure, and operations —
+            anywhere a broken workflow can be mapped, automated, and improved.
+          </p>
+        </div>
+
+        <div class="industries">
+          <article class="industry">
+            <h3>Construction</h3>
+            <p>Automate quoting, triage, safety documentation, and site information flow across teams.</p>
+          </article>
+          <article class="industry">
+            <h3>Asset management</h3>
+            <p>Track assets, property context, inspections, and physical-state changes using spatial systems.</p>
+          </article>
+          <article class="industry">
+            <h3>Property & surveying</h3>
+            <p>Structure measurements, site context, and geospatial data into reusable operational outputs.</p>
+          </article>
+          <article class="industry">
+            <h3>Industrial operations</h3>
+            <p>Reduce manual reporting, fragmented systems, and slow decision chains in day-to-day workflows.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="cta-wrap">
+          <div class="cta-grid">
+            <div class="cta-copy">
+              <div class="eyebrow" style="margin-bottom:12px;">Tell us your issue</div>
+              <h2>Any workflow. Any bottleneck. Start there.</h2>
+              <p>
+                Tell us what feels too manual, too slow, or too fragmented. We'll map the problem,
+                identify the real leverage point, and show you what an AI-driven workflow could look like.
+              </p>
+              <a class="btn btn-primary" href="mark@sasai.co.nz">Email us directly</a>
+            </div>
+
+            <div class="form-box">
+              <form>
+                <div class="form-row">
+                  <input type="text" placeholder="Name" required>
+                  <input type="text" placeholder="Company" required>
+                </div>
+                <div class="form-row">
+                  <select required>
+                    <option value="">Industry</option>
+                    <option>Construction</option>
+                    <option>Asset Management</option>
+                    <option>Property</option>
+                    <option>Industrial</option>
+                    <option>Other</option>
+                  </select>
+                  <input type="email" placeholder="Email" required>
+                </div>
+                <textarea placeholder="What workflow do you want to fix or automate?" required></textarea>
+                <button class="btn btn-primary" type="submit" style="width:100%;">Tell us about your workflow</button>
+                <div class="form-note">
+                  Start with the problem, not the technology. A messy handoff, a slow quote process, fragmented job data,
+                  repetitive reporting, missed context — that's enough.
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      AI Solutions — AI automation NZ for construction, property, infrastructure, and operational workflows.
+    </div>
+  </footer
